@@ -41,7 +41,7 @@
         <header-file src="src/ios/TZImagePickerController/TZProgressView.h" />
         <source-file src="src/ios/TZImagePickerController/TZProgressView.m" />
         <header-file src="src/ios/TZImagePickerController/TZVideoPlayerController.h" />
-        <source-file src="src/ios/TZImagePickerControllerTZVideoPlayerController" />
+        <source-file src="src/ios/TZImagePickerControllerTZVideoPlayerController.m" />
         <header-file src="src/ios/TZImagePickerController/UIView+Layout.h" />
         <source-file src="src/ios/TZImagePickerController/UIView+Layout.m" />
         <resource-file src="src/ios/TZImagePickerController/TZImagePickerController.bundle" />
