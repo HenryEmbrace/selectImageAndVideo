@@ -38,11 +38,11 @@ cordova.plugins.selectImageAndVideo.selectIMageOrVideo(args,(msg)=> {
         console.log("错误%o", msg);
       });
       
-     // 上传方法为自己封装的，主要代码为： 
-//     cordova.plugins.selectImageAndVideo.selectIMageOrVideo(args,(msg)=> {
-//     cordova.plugins.selectImageAndVideo.selectImage(args,(msg)=> {
-//     cordova.plugins.selectImageAndVideo.selectSignleImage(args,(msg)=> {
-//     cordova.plugins.selectImageAndVideo.selectVideo(args,(msg)=> {
+      // 上传方法为自己封装的，主要代码为： 
+     //     cordova.plugins.selectImageAndVideo.selectIMageOrVideo(args,(msg)=> {
+     //     cordova.plugins.selectImageAndVideo.selectImage(args,(msg)=> {
+     //     cordova.plugins.selectImageAndVideo.selectSignleImage(args,(msg)=> {
+     //     cordova.plugins.selectImageAndVideo.selectVideo(args,(msg)=> {
 
  
 本插件基于 TZImagePickerController 图片选择器实现
