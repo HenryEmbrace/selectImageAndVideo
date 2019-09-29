@@ -1,0 +1,25 @@
+{
+  "name": "selectImageAndVideo",
+  "version": "1.0.1",
+  "description": "ios plugin for ionic",
+  "cordova": {
+    "id": "cordova-plugin-selectImageAndVideo",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryEmbrace/selectImageAndVideo.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "ZlHy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HenryEmbrace/selectImageAndVideo/issues"
+  },
+  "homepage": "https://github.com/HenryEmbrace/selectImageAndVideo#readme"
+}

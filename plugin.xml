@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-selectImageAndVideo" version="1.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>selectImageAndVideo</name>
+    <js-module name="selectImageAndVideo" src="www/selectImageAndVideo.js">
+        <clobbers target="cordova.plugins.selectImageAndVideo" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="selectImageAndVideo">
+                <param name="ios-package" value="selectImageAndVideo" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/selectImageAndVideo.h" />
+        <source-file src="src/ios/selectImageAndVideo.m" />
+        <header-file src="src/ios/TZImagePickerController/MediaUtils.h" />
+        <source-file src="src/ios/TZImagePickerController/MediaUtils.m" />
+        <header-file src="src/ios/TZImagePickerController/NSBundle+TZImagePicker.h" />
+        <source-file src="src/ios/TZImagePickerController/NSBundle+TZImagePicker.m" />
+        <header-file src="src/ios/TZImagePickerController/TZAssetCell.h" />
+        <source-file src="src/ios/TZImagePickerController/TZAssetCell.m" />
+        <header-file src="src/ios/TZImagePickerController/TZAssetModel.h" />
+        <source-file src="src/ios/TZImagePickerController/TZAssetModel.m" />
+        <header-file src="src/ios/TZImagePickerController/TZGifPhotoPreviewController.h" />
+        <source-file src="src/ios/TZImagePickerController/TZGifPhotoPreviewController.m" />
+        <header-file src="src/ios/TZImagePickerController/TZImageCropManager.h" />
+        <source-file src="src/ios/TZImagePickerController/TZImageCropManager.m" />
+        <header-file src="src/ios/TZImagePickerController/TZImageManager.h" />
+        <source-file src="src/ios/TZImagePickerController/TZImageManager.m" />
+        <header-file src="src/ios/TZImagePickerController/TZImagePickerController.h" />
+        <source-file src="src/ios/TZImagePickerController/TZImagePickerController.m" />
+        <header-file src="src/ios/TZImagePickerController/TZImageRequestOperation.h" />
+        <source-file src="src/ios/TZImagePickerController/TZImageRequestOperation.m" />
+        <header-file src="src/ios/TZImagePickerController/TZLocationManager.h" />
+        <source-file src="src/ios/TZImagePickerController/TZLocationManager.m" />
+        <header-file src="src/ios/TZImagePickerController/TZPhotoPickerController.h" />
+        <source-file src="src/ios/TZImagePickerController/TZPhotoPickerController.m" />
+        <header-file src="src/ios/TZImagePickerController/TZPhotoPreviewCell.h" />
+        <source-file src="src/ios/TZImagePickerController/TZPhotoPreviewCell.m" />
+        <header-file src="src/ios/TZImagePickerController/TZPhotoPreviewController.h" />
+        <source-file src="src/ios/TZImagePickerController/TZPhotoPreviewController.m" />
+        <header-file src="src/ios/TZImagePickerController/TZProgressView.h" />
+        <source-file src="src/ios/TZImagePickerController/TZProgressView.m" />
+        <header-file src="src/ios/TZImagePickerController/TZVideoPlayerController.h" />
+        <source-file src="src/ios/TZImagePickerControllerTZVideoPlayerController" />
+        <header-file src="src/ios/TZImagePickerController/UIView+Layout.h" />
+        <source-file src="src/ios/TZImagePickerController/UIView+Layout.m" />
+        <resource-file src="src/ios/TZImagePickerController/TZImagePickerController.bundle" />
+        
+        
+        
+    </platform>
+</plugin>
