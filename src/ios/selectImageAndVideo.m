@@ -23,7 +23,7 @@
 #pragma 选择图片和视频的方法实现
 //选择图片回调
 -(void)selectImage:(CDVInvokedUrlCommand *)command {
-    
+    [self.ImgsArr removeAllObjects];
     self.latestCommand = command;
     NSString * Num= [NSString stringWithFormat:@"%@",[command.arguments lastObject]];
     NSUInteger canSelectNum = [Num integerValue];
@@ -67,7 +67,7 @@
 
 //选择单张图片回调
 -(void)selectSignleImage:(CDVInvokedUrlCommand *)command {
-    
+    [self.ImgsArr removeAllObjects];
     self.latestCommand = command;
     
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
@@ -131,7 +131,8 @@
 
 //选择图片或者视频
 -(void)selectIMageOrVideo:(CDVInvokedUrlCommand *)command {
-    
+    //数组置空
+    [self.ImgsArr removeAllObjects];
     self.latestCommand = command;
     NSString * Num= [NSString stringWithFormat:@"%@",[command.arguments lastObject]];
     NSUInteger canSelectNum = [Num integerValue];
