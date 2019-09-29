@@ -25,11 +25,13 @@
 -(void)selectImage:(CDVInvokedUrlCommand *)command {
     
     self.latestCommand = command;
+    NSString * Num= [NSString stringWithFormat:@"%@",[command.arguments lastObject]];
+    NSUInteger canSelectNum = [Num integerValue];
     
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:canSelectNum delegate:self];
     
     
-    //     设置是否显示图片序号
+    // 设置是否显示图片序号
     imagePickerVc.showSelectedIndex = YES;
     //选择图片时不选视频
     imagePickerVc.allowPickingVideo =NO;
@@ -72,7 +74,7 @@
     //选择图片时不选视频
     imagePickerVc.allowPickingVideo =NO;
     
-    //     设置是否显示图片序号
+    //设置是否显示图片序号
     imagePickerVc.showSelectedIndex = YES;
     
     // 你可以通过block或者代理，来得到用户选择的照片.
@@ -131,8 +133,9 @@
 -(void)selectIMageOrVideo:(CDVInvokedUrlCommand *)command {
     
     self.latestCommand = command;
-    
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    NSString * Num= [NSString stringWithFormat:@"%@",[command.arguments lastObject]];
+    NSUInteger canSelectNum = [Num integerValue];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:canSelectNum delegate:self];
     
     
     //     设置是否显示图片序号
