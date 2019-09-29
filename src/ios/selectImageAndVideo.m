@@ -31,7 +31,8 @@
     
     //     设置是否显示图片序号
     imagePickerVc.showSelectedIndex = YES;
-    imagePickerVc.videoMaximumDuration = 10; // 视频最大拍摄时间
+    //选择图片时不选视频
+    imagePickerVc.allowPickingVideo =NO;
     
     // 你可以通过block或者代理，来得到用户选择的照片.
     [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
@@ -51,12 +52,46 @@
             PathString = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%d.jpg",[formater stringFromDate:[NSDate date]],i]];
             [UIImageJPEGRepresentation(img,1) writeToFile:PathString atomically:YES];
             
-            //            NSURL* url = [NSURL fileURLWithPath:PathString];
-            //            if ([[NSFileManager defaultManager] fileExistsAtPath:PathString]) {
-            //                [[NSFileManager defaultManager] removeItemAtPath:PathString error:nil];
-            //            }
-            //
-            //            PathString = url.absoluteString;
+            [self.ImgsArr addObject:PathString];
+            
+        }
+        [self imgsArr:self.ImgsArr videoStr:nil];
+        
+    }];
+    
+    [self.viewController presentViewController:imagePickerVc animated:YES completion:nil];
+    
+}
+
+//选择单张图片回调
+-(void)selectSignleImage:(CDVInvokedUrlCommand *)command {
+    
+    self.latestCommand = command;
+    
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    //选择图片时不选视频
+    imagePickerVc.allowPickingVideo =NO;
+    
+    //     设置是否显示图片序号
+    imagePickerVc.showSelectedIndex = YES;
+    
+    // 你可以通过block或者代理，来得到用户选择的照片.
+    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+        
+        //        NSLog(@"PHOTOS:%@",photos);
+        
+        NSString *path = [NSString stringWithFormat:@"%@",[MediaUtils getTempPath]];
+        
+        NSString * PathString;
+        
+        NSDateFormatter *formater = [[NSDateFormatter alloc] init];//用时间给文件全名，以免重复
+        [formater setDateFormat:@"yyyyMMddHHmmss"];
+        
+        for (int i = 0; i < photos.count; i++) {
+            UIImage *img = [photos objectAtIndex:i];
+            
+            PathString = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%d.jpg",[formater stringFromDate:[NSDate date]],i]];
+            [UIImageJPEGRepresentation(img,1) writeToFile:PathString atomically:YES];
             
             [self.ImgsArr addObject:PathString];
             
@@ -73,8 +108,10 @@
 //选择视频回调
 -(void)selectVideo:(CDVInvokedUrlCommand *)command {
     self.latestCommand = command;
+   
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:0 delegate:self];
     
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+     imagePickerVc.videoMaximumDuration = 10; // 视频最大拍摄时间
     
     [imagePickerVc setDidFinishPickingVideoHandle:^(UIImage *coverImage, PHAsset *asset) {
         [[TZImageManager manager] getVideoOutputPathWithAsset:asset success:^(NSString *outputPath) {
@@ -89,6 +126,60 @@
     
      [self.viewController presentViewController:imagePickerVc animated:YES completion:nil];
 }
+
+//选择图片或者视频
+-(void)selectIMageOrVideo:(CDVInvokedUrlCommand *)command {
+    
+    self.latestCommand = command;
+    
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    
+    
+    //     设置是否显示图片序号
+    imagePickerVc.showSelectedIndex = YES;
+    imagePickerVc.videoMaximumDuration = 10; // 视频最大拍摄时间
+    
+    // 你可以通过block或者代理，来得到用户选择的照片.
+    [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+        
+        //        NSLog(@"PHOTOS:%@",photos);
+        
+        NSString *path = [NSString stringWithFormat:@"%@",[MediaUtils getTempPath]];
+        
+        NSString * PathString;
+        
+        NSDateFormatter *formater = [[NSDateFormatter alloc] init];//用时间给文件全名，以免重复
+        [formater setDateFormat:@"yyyyMMddHHmmss"];
+        
+        for (int i = 0; i < photos.count; i++) {
+            UIImage *img = [photos objectAtIndex:i];
+            
+            PathString = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%d.jpg",[formater stringFromDate:[NSDate date]],i]];
+            [UIImageJPEGRepresentation(img,1) writeToFile:PathString atomically:YES];
+            
+            [self.ImgsArr addObject:PathString];
+            
+        }
+        [self imgsArr:self.ImgsArr videoStr:nil];
+        
+    }];
+    
+    [imagePickerVc setDidFinishPickingVideoHandle:^(UIImage *coverImage, PHAsset *asset) {
+        [[TZImageManager manager] getVideoOutputPathWithAsset:asset success:^(NSString *outputPath) {
+            NSLog(@"VIDEOPATH%@",outputPath);
+            [self imgsArr:nil videoStr:[outputPath copy]];
+            
+        } failure:^(NSString *errorMessage, NSError *error) {
+            NSLog(@"write failed");
+        }];
+        
+    }];
+    
+    [self.viewController presentViewController:imagePickerVc animated:YES completion:nil];
+    
+}
+
+
 
 
 

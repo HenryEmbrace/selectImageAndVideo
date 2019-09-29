@@ -20,13 +20,16 @@ NS_ASSUME_NONNULL_BEGIN
 //选择页面控制器
 @property (nonatomic, strong) TZImagePickerController* imagePickerVc;
 
-
-
+// 选择图片或者视频
+-(void)selectIMageOrVideo:(CDVInvokedUrlCommand *)command;
 //选择图片
 -(void)selectImage:(CDVInvokedUrlCommand *)command;
-//选择视频
+//选择单张图片，一般用于上传头像
+-(void)selectSignleImage:(CDVInvokedUrlCommand *)command;
+//选择视频，目前视频只能单选
 -(void)selectVideo:(CDVInvokedUrlCommand *)command;
 
+//上传图片或者视频到ionic的项目中
 -(void) imgsArr:(NSMutableArray * __nullable)imgsArr videoStr:(NSString *__nullable)videoStr;
 
 @end
